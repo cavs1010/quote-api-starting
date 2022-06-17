@@ -6,8 +6,12 @@ const { getRandomElement } = require('./utils');
 
 const PORT = process.env.PORT || 4001;
 
-app.use(express.static('public'));
+// Get a random quote
+app.get('/api/quotes/random', (req, res, next) =>{
+    res.send({quote: getRandomElement(quotes)});
+});
 
+app.use(express.static('public'));
 app.listen(PORT, ()=>{
     console.log(`Server is listening in port ${PORT}`);
 });
